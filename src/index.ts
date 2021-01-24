@@ -9,7 +9,7 @@ class Main {
     constructor(){
         this.createIssue();
     }
-    
+
     createIssue(){
         const title = `${$.datebuilder.year().month().day().delimiter('/').build()} 매일매일 알고리즘 참석확인`
         const cheering = ["오늘도 화이팅!", "오늘도 끝까지 해봐요!"]
@@ -29,8 +29,9 @@ class Main {
                   body,
                 });
                 tools.log.success(`Created issue ${issue.data.title}#${issue.data.number}: ${issue.data.html_url}`, );
-            
+                
             } catch (err) {
+                console.log(err);
                 tools.log.error(err);
                 if (err.errors) tools.log.error(err.errors);
                 tools.exit.failure();
@@ -42,3 +43,5 @@ class Main {
           );
     }
 }
+
+new Main();
