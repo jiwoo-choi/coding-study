@@ -9,7 +9,7 @@ on:
     - cron: '0 21 * * *'
   push:
     branches: 
-      - master
+      - main
 
 jobs:
   fetch:
