@@ -194,7 +194,7 @@ class Main {
           }
         }
       }
-    
+    fs.writeFileSync("./data.json", JSON.stringify(parsedData));
     tools.log.success(`Created issue ${issue.data.title}#${issue.data.number}: ${issue.data.html_url}`,
     );
   } catch (err) {
