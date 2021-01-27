@@ -2,5 +2,5 @@
     "participants":["faker", "hoonti06"],
     "tierRange":"s4..g1",
     "minSolvedLimit":500,
-    "numberOfQuestions":1
+    "numberOfQuestions":2
 }
