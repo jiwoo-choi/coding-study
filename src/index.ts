@@ -117,7 +117,7 @@ class Main {
           data.attendance[j].checked.forEach( value => {
             if (value in participants) {
               participants[value].attendPoint++;
-              participants[value].data[j+1] = "🙋‍♀️";
+              participants[value].data[j+1] = "💰";
             } 
           })
         }
