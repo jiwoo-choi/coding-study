@@ -24,7 +24,7 @@ class Solution
                 sb.append(arr[i]).append(" ").append(arr[i + n / 2 + (n%2)]).append(" ");
             }
 
-            if (adder > 0) {
+            if ((n%2) > 0) {
                 sb.append(arr[n / 2]);
             }
 
