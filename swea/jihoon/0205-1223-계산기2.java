@@ -15,33 +15,36 @@ public class Solution {
 	static Stack<Character> opStack = new Stack<>();
 	static boolean[] visited;
 	static char[] input;
-	static StringBuilder sb = new StringBuilder();
+	static StringBuilder pfx = new StringBuilder();
 
 	static void postfix() {
 		for (int i = 0; i < N; i++) {
 			char curCh = input[i];
 			int curNum = curCh - '0';
-			if (0 <= curNum && curNum <= 9)	// 숫자
-				sb.append(curNum);
-			else {  // 연산자
-				while (!opStack.isEmpty()) {
-					char topCh = opStack.peek();
-					if (topCh <= curCh)  // '*' : 42, '+' : 43  /  '*'가 먼저 삽입될 수 있도록
-						sb.append(opStack.pop());
-					else
-						break;
-				}
-				opStack.push(curCh);
+			if (0 <= curNum && curNum <= 9)	{ // 숫자
+				pfx.append(curNum);
+				continue;
 			}
+			
+			// 연산자
+			while (!opStack.isEmpty()) {
+				char topCh = opStack.peek();
+				if (topCh <= curCh)  // '*' : 42, '+' : 43  /  '*'가 먼저 삽입될 수 있도록
+					pfx.append(opStack.pop());
+				else
+					break;
+			}
+			opStack.push(curCh);
+			
 		}
 		while (!opStack.isEmpty())
-			sb.append(opStack.pop());
+			pfx.append(opStack.pop());
 	}
 	
 	static int calculate() {
-		int len = sb.length();
+		int len = pfx.length();
 		for (int i = 0; i < len; i++) {
-			char curCh = sb.charAt(i);
+			char curCh = pfx.charAt(i);
 			int curNum = curCh - '0';
 			if (0 <= curNum && curNum <= 9) {  // 숫자
 				numStack.push(curNum);
@@ -67,7 +70,7 @@ public class Solution {
 		
 		for (int tc = 1; tc <= 10; tc++) {
 			// init
-			sb.setLength(0);
+			pfx.setLength(0);
 			numStack.clear();
 			opStack.clear();
 			
