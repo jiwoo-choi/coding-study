@@ -11,9 +11,8 @@ import java.util.StringTokenizer;
 public class Solution {
 	
 	static int N;
-	static Stack<Integer> numStack = new Stack<>();
 	static Stack<Character> opStack = new Stack<>();
-	static boolean[] visited;
+	static Stack<Integer> numStack = new Stack<>();
 	static char[] input;
 	static StringBuilder pfx = new StringBuilder();
 
