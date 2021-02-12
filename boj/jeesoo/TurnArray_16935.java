@@ -25,7 +25,6 @@ public class TurnArray_16935 {
 		M = Integer.parseInt(st.nextToken()); // M열
 		int R = Integer.parseInt(st.nextToken()); // 몇 번 수행할지
 		
-		// 쪼개지 않아도 되면 쪼개지 말자!
 		arr = new int[N][M];
 		
 		for (int y = 0; y < N; y++) {
@@ -48,7 +47,7 @@ public class TurnArray_16935 {
 				case '5':rightC();break;
 				case '6':leftC();break;
 				}
-		} // R번 반복
+		}
 			for (int i = 0; i < arr.length; i++) {
 				for (int j = 0; j < arr[0].length; j++) {
 					sb.append(arr[i][j]+" ");
@@ -104,8 +103,6 @@ public class TurnArray_16935 {
 		halfR=N/2;
 		halfC=M/2;
 		
-//		System.out.println(N+" "+M+" "+halfR+" "+halfC);
-		
 		result = new int[N][M];
 		for (int y = 0; y < halfR; y++) {
 			for (int x = 0; x < halfC; x++) {
@@ -131,10 +128,6 @@ public class TurnArray_16935 {
 		for (int i = 0; i < N; i++) {
 			arr[i] = Arrays.copyOf(result[i], M);
 		}
-		
-// for문 4곳 나눠서 처리
-// 전체로 돌리고 if문으로 나눠서 처리
-		
 	}
 
 
