@@ -171,8 +171,7 @@
         {
           "day": "07",
           "date": "20210207",
-          "checked": [
-          ],
+          "checked": [],
           "issue_number": 1
         },
         {
@@ -235,7 +234,7 @@
           "issue_number": 30
         }
       ]
-    },
+    }
   ],
   "update": "21-02-14-12:07"
 }
