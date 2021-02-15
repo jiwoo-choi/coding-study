@@ -32,11 +32,6 @@ public class Solution {
         int j = N-1;
         while (inCard[i-1] >= inCard[j]) {
             j--;
-            if (j == 0){
-                System.out.println(i-1);
-                System.out.println(Arrays.toString(inCard));
-                break;
-            }
         }
 
         swap(i-1, j);
