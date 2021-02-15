@@ -117,28 +117,68 @@ n == r일 때 활용 가능. 사전순으로 순열을 뽑을 수 있음.
 
 ```
 public static boolean next_permutation() {
-int i = n-1;
-while ( i > 0 && opp[i-1] > opp[i]) i = i -1;
-if ( i <= 0 ) return false;
-int j = n-1;
-// i는 꼭대기를 의미한다. 
-// j는 바꿀 타겟이다.
-// 내림차순이기 때문에 끝부터 순차적으로 훑는다.
-while (opp[j] <= opp[i-1]) j = j - 1;
-swap(opp, i-1, j); // i-1과 j를 교체해줘야한다.
+  int i = n-1;
+  while ( i > 0 && opp[i-1] >= opp[i]) i = i -1; // ...(1)번
+  if ( i <= 0 ) return false; 
+  int j = n-1;
+  // i는 꼭대기를 의미한다. 
+  // j는 바꿀 타겟이다.
+  // 내림차순이기 때문에 끝부터 순차적으로 훑는다.
+  while (opp[j] <= opp[i-1]) j = j - 1; // ...(2)번
+  swap(opp, i-1, j); // i-1과 j를 교체해줘야한다. // ...(3)번
 
-// i이후의 배열은 내림차순이기때문에
-// 
-int k = n-1;
-while ( i < k ) {
-  swap(opp, i , k);
-  i += 1;
-  k -= 1;
-}
-return true;
+  // i이후의 배열은 내림차순이기때문에
+  // 교차해서 바꿔줄 경우, 내림차순 -> 오름차순으로 변경 가능하다.
+  int k = n-1; 
+  while ( i < k ) { // ...(4)번
+    swap(opp, i , k);
+    i += 1;
+    k -= 1;
+  }
+  return true;
 }
 ```
 
 
 ### next_permutation 응용 : 조합 구하기.
 
+```
+static int[] opp = { 0, 0, 0, 1, 1};
+	
+public static boolean next_permutation() {
+  int i = n-1;
+
+  while ( i > 0 && opp[i-1] >= opp[i]) i = i -1;
+  if ( i <= 0 ) return false;
+  int j = n-1;
+  while (opp[j] <= opp[i-1]) j = j - 1;
+  swap(opp, i-1, j);
+
+  int k = n-1;
+  while ( i < k ) {
+    swap(opp, i , k);
+    i += 1;
+    k -= 1;
+  }
+  return true;
+}
+ ```
+ 
+```
+do {
+  System.out.println(Arrays.toString(opp));
+} while(next_permutation());
+```
+```
+[0, 0, 0, 1, 1]
+[0, 0, 1, 0, 1]
+[0, 0, 1, 1, 0]
+[0, 1, 0, 0, 1]
+[0, 1, 0, 1, 0]
+[0, 1, 1, 0, 0]
+[1, 0, 0, 0, 1]
+[1, 0, 0, 1, 0]
+[1, 0, 1, 0, 0]
+[1, 1, 0, 0, 0]
+```
+1이 있는 부분이 선택되었다고 가정하고 계산을 진행할 수 있다.
