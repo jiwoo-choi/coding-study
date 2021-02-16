@@ -15,15 +15,12 @@ public class ValidityCheck_1233_error {
 		StringBuilder sb = new StringBuilder();
 		for (int testcase = 1; testcase <= 10 ; testcase++) {
 			int N = Integer.parseInt(br.readLine());
-			String[] tree = new String[N+1];
 			
 			int check = 1;
-			int tmp=0;
 			int i=0;
 			
 			for (i = 1; i <= N; i++) {
 				st = new StringTokenizer(br.readLine()," ");
-//				tree[Integer.parseInt(st.nextToken())] = st.nextToken();
 				st.nextToken();
 				String s = st.nextToken();
 				
@@ -31,13 +28,11 @@ public class ValidityCheck_1233_error {
 				if (!Character.isDigit(s.charAt(0))) {
 					if (!st.hasMoreTokens()) {
 						check = 0;
-						tmp=i;
 						break;
 					}
 					st.nextToken();
 					if (!st.hasMoreTokens()) {
 						check = 0;
-						tmp=i;
 						break;
 					}
 				}
@@ -45,7 +40,6 @@ public class ValidityCheck_1233_error {
 				else {
 					if (st.hasMoreTokens()) {
 						check = 0;
-						tmp=i;
 						break;
 					}
 				}
