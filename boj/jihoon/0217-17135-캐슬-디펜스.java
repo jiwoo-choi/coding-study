@@ -24,7 +24,7 @@ public class Main {
     static int res;
     static Set<Integer> dead = new HashSet<>();
 
-    static void dfs(int sr, int sc) {
+    static void bfs(int sr, int sc) {
         Queue<int[]> q = new ArrayDeque<>();
         q.offer(new int[]{sr, sc});
   
