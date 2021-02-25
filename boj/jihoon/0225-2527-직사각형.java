@@ -26,7 +26,7 @@ public class Main {
             return "a";
         else if (x1 == x2 && y1 == y2)
             return "c";
-        else if (y2 - y1 == 0 || x2 - x1 == 0)
+        else if (x1 == x2 || y1 == y2)
             return "b";
         else
             return "d";
