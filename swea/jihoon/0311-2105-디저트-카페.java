@@ -49,12 +49,9 @@ public class Solution {
     }
 
     static void solution() {
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                set.clear();
+        for (int i = 0; i < N; i++)
+            for (int j = 0; j < N; j++)
                 dfs(i, j, i, j, 0, 0, 0);
-            }
-        }
     }
 
     public static void main(String[] args) throws Exception {
