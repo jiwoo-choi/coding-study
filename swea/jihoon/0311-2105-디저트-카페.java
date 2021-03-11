@@ -10,19 +10,19 @@ public class Solution {
     static int[][] board;
     static int res;
 
+		// ↘ ↙ ↖ ↗
     static int[] dr = { 1, 1, -1, -1 };
     static int[] dc = { 1,-1, -1,  1 };
     static boolean[][] visited;
     static HashSet<Integer> set = new HashSet<>();
 
-    static void dfs(int sr, int sc, int r, int c, int dir, int dir0Cnt, int dir1Cnt) {
+    static void go(int sr, int sc, int r, int c, int dir, int dir0Cnt, int dir1Cnt) {
         if (visited[r][c]) {
             if (sr == r && sc == c)
                 res = Math.max(res, set.size());
             return;
         }
-        if (set.contains(board[r][c]))
-            return;
+        if (set.contains(board[r][c])) return;
 
         set.add(board[r][c]);
         visited[r][c] = true;
@@ -30,8 +30,7 @@ public class Solution {
         for (int ndir = dir; ndir < dir + 2; ndir++) {
             int nr = r + dr[ndir % 4];
             int nc = c + dc[ndir % 4];
-            if (nr < 0 || nr >= N || nc < 0 || nc >= N)
-                continue;
+            if (nr < 0 || nr >= N || nc < 0 || nc >= N) continue;
 
             int nDir0Cnt = dir0Cnt;
             int nDir1Cnt =  dir1Cnt;
@@ -41,7 +40,7 @@ public class Solution {
             else nDir1Cnt--;
             if (nDir0Cnt < 0 || nDir1Cnt < 0) continue;
 
-            dfs(sr, sc, nr, nc, ndir, nDir0Cnt, nDir1Cnt);
+            go(sr, sc, nr, nc, ndir, nDir0Cnt, nDir1Cnt);
         }
 
         set.remove(board[r][c]);
@@ -51,7 +50,7 @@ public class Solution {
     static void solution() {
         for (int i = 0; i < N; i++)
             for (int j = 0; j < N; j++)
-                dfs(i, j, i, j, 0, 0, 0);
+                go(i, j, i, j, 0, 0, 0);
     }
 
     public static void main(String[] args) throws Exception {
