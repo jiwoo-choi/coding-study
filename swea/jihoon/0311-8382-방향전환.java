@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 
 public class Solution {
     static final int MAX_N = 201;
-    static final int OFFSET = 0;
+    static final int OFFSET = 100;
     static boolean[][][] visited = new boolean[MAX_N][MAX_N][2];
   
     static int[] dx = {-1, 0, 1, 0};
