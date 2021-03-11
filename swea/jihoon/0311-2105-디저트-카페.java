@@ -27,10 +27,9 @@ public class Solution {
         set.add(board[r][c]);
         visited[r][c] = true;
 
-        for (int i = dir; i < dir + 2; i++) {
-            int ndir = i % 4;
-            int nr = r + dr[ndir];
-            int nc = c + dc[ndir];
+        for (int ndir = dir; ndir < dir + 2; ndir++) {
+            int nr = r + dr[ndir % 4];
+            int nc = c + dc[ndir % 4];
             if (nr < 0 || nr >= N || nc < 0 || nc >= N)
                 continue;
 
