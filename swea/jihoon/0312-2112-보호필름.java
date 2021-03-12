@@ -60,7 +60,6 @@ public class Solution {
         int testcase = Integer.parseInt(in.readLine());
         for (int tc = 1; tc <= testcase; tc++) {
             res = Integer.MAX_VALUE;
-            Arrays.fill(arr, NONE);
 
             StringTokenizer st = new StringTokenizer(in.readLine(), " ");
             D = Integer.parseInt(st.nextToken());
