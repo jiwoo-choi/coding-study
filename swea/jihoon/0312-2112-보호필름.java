@@ -11,7 +11,7 @@ public class Solution {
     static final int A = 0;
     static final int B = 1;
     static final int NONE = -1;
-    static int res = 0;
+    static int res;
 
     static boolean isFinish() {
         for (int j = 0; j < W; j++) {
