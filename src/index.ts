@@ -33,15 +33,15 @@ class Main {
           secrets: ["GITHUB_TOKEN"],
         },
     )
-
   } 
 
 
     async updateData(tools: Toolkit){
+
+
       const read = fs.readFileSync("./data.json");
       const parsedData = JSON.parse(read.toString()) as ParticipateData;
-      // 1. 어제 날자로 이슈 넘버 가져오기.
-      // 1-1. 어제 날짜의 연도, 월 가져오기, 그리고 issue number 찾기.
+      
       const yyyymm = $.datebuilder.yyear().ymonth().build();
 
       for (let i = 0 ; i < parsedData.data.length; i++) {
@@ -142,14 +142,14 @@ class Main {
     const title = `${$.datebuilder.year().month().day().delimiter('/').build()} 매일매일 알고리즘 참석확인`
     const cheering = ["오늘도 화이팅!", "오늘도 끝까지 해봐요!", "오늘도 풀어봅시다."]
 
-    const boj = new BojQuery();
-    const response = await boj.request();
-    const plus = response.join('\n');
+    // const boj = new BojQuery();
+    // const response = await boj.request();
+    // const plus = response.join('\n');
 
     const body = 
-    plus
-    + '\n'
-    + cheering[Math.floor(Math.random() * cheering.length)] 
+    // plus
+    // + '\n'
+    cheering[Math.floor(Math.random() * cheering.length)] 
     + '\n' 
     + `제출기한 : ${$.datebuilder.tyear().tmonth().tday().delimiter('-').build()} (다음날) 12:30PM 까지`
 
@@ -161,11 +161,19 @@ class Main {
         body,
       });
 
+      // const issue = {
+      //     data : {
+      //       number : 100,
+      //       title : "test",
+      //       html_url: "test_2",
+      //     }
+      // }
     const read = fs.readFileSync("./data.json");
     const parsedData = JSON.parse(read.toString()) as ParticipateData;
     const yyyymm = $.datebuilder.year().month().build();
     parsedData.update = $.date.getMoment(DateType.TODAY).format("YY-MM-DD-hh:mm"); // 깃허브 오류 방지용.
     
+
     if ($.date.isTodayFirstDay()) {
         // 새로운 이슈를 만든다.
         parsedData.data.push({
@@ -195,8 +203,7 @@ class Main {
         }
       }
     fs.writeFileSync("./data.json", JSON.stringify(parsedData));
-    tools.log.success(`Created issue ${issue.data.title}#${issue.data.number}: ${issue.data.html_url}`,
-    );
+    tools.log.success(`Created issue ${issue.data.title}#${issue.data.number}: ${issue.data.html_url}`,);
   } catch (err) {
     tools.log.error(err);
     if (err.errors) tools.log.error(err.errors);
