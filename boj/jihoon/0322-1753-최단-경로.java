@@ -37,13 +37,13 @@ public class Main {
         while (!pq.isEmpty()) {
             Node cur = pq.poll();
             int from = cur.to;
-            if (visited[from]) continue;
-
-            visited[from] = true;
             int fromDist = cur.dist;
+            if (visited[from]) continue;
+            visited[from] = true;
+            
             for (int i = 0; i < edge[from].size(); i++) {
                 int to = edge[from].get(i).to;
-                int toDist = fromDist + edge[from].get(i).dist;
+                int toDist = edge[from].get(i).dist + fromDist;
                 if (visited[to] || toDist > dists[to])
                     continue;
 
