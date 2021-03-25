@@ -17,8 +17,8 @@ export default class Calendar {
     private _delimiter?: string;
 
     constructor(date? : MomentInput) {
-        moment.locale('ko');
         this.now = date ? moment(date) : moment(moment.now());
+        moment.locale('ko');
         this.updateDateState();
     }
 
