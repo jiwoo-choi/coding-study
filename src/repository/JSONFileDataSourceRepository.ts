@@ -58,7 +58,6 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
         let year = date.builder().year.build();
         let month = date.builder().month.build();
 
-        
         const data = this.data.monthlyData.data;
 
         let dirty = false;
@@ -92,7 +91,7 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
         if (dirty) {
             this.dataSource.saveData();
         }
-        
+
     }
 
 

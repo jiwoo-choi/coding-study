@@ -13,7 +13,7 @@ export default class DashboardManager implements DashboardManageService {
     private chartGenerator : ChartGeneratorService;
     private dateManager : Calendar;
 
-    constructor(tableGenerator : TableGeneratorService, chartGenerator: ChartGeneratorService, dateManager: Calendar, ) {
+    constructor(tableGenerator : TableGeneratorService, chartGenerator: ChartGeneratorService, dateManager: Calendar) {
         this.tableGenerator = tableGenerator;
         this.chartGenerator = chartGenerator;
         this.dateManager = dateManager;
@@ -23,6 +23,8 @@ export default class DashboardManager implements DashboardManageService {
         let content = "";
         content += this.chartGenerator.populateChart();
         content += this.tableGenerator.populateTable("✅", " ");
+        content += '\n';
+        content += this.dateManager.builder("-").year.month.day.build();
         fs.writeFileSync(README, content);
     }
 
