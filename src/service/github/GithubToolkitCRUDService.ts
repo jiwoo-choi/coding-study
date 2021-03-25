@@ -41,6 +41,9 @@ export default class GitHubToolkitCRUDService implements GithubAPISerivce {
                 callback(false, 0, this.dateManager);
                 tools.exit.failure();
             }
+        },
+        {
+            secrets: ["GITHUB_TOKEN"],
         })      
     }
 
@@ -61,6 +64,9 @@ export default class GitHubToolkitCRUDService implements GithubAPISerivce {
                 callback(false, []);
                 tools.exit.failure();
             }
+        },  
+         {
+            secrets: ["GITHUB_TOKEN"],
         })
     }
     
