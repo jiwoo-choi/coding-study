@@ -25,7 +25,7 @@ export default class DataSource implements DataSourceTx {
     saveData(newMonthlyData: MonthlyDataType): void {
 
         this.monthlyData = newMonthlyData;
-        
+
         try {
             if (this.monthlyData) {
                 this.monthlyData.update = new Date().toISOString();
@@ -58,6 +58,7 @@ export default class DataSource implements DataSourceTx {
         try {     
             this.monthlyData = monthly_db;
             this.pariticipationData = transform(this.monthlyData, participants);
+            console.log(this.pariticipationData);
         } catch (e) {
             throw new Error('load failure : cannot load to DatabaseSource' + 'message : ' + e);
         }

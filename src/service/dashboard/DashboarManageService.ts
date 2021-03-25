@@ -24,7 +24,7 @@ export default class DashboardManager implements DashboardManageService {
         content += this.chartGenerator.populateChart();
         content += this.tableGenerator.populateTable("✅", " ");
         content += '\n';
-        content += this.dateManager.builder("-").year.month.day.build();
+        content += this.dateManager.builder("-").year.month.date.build();
         fs.writeFileSync(README, content);
     }
 
