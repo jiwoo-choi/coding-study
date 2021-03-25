@@ -27,7 +27,7 @@ export default class GitHubToolkitCRUDService implements GithubAPISerivce {
             + `제출기한 : ${this.dateManager.getTomorrow().builder('/').year.month.date.build()} (다음날) 12:30PM 까지`
 
             tools.log.info(`Creating new issue ${title}`);
-
+            
             try {
                 const issue = await tools.github.issues.create({
                     ...tools.context.repo,

@@ -65,6 +65,7 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
         let dirty = false;
         for (let monthly of data) {
             if (monthly.yyyymm === yyyymm) { 
+                console.log("YYY-dirty-1");
                 monthly.attendance.push({
                     day : day,
                     checked:[],
@@ -76,6 +77,7 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
         }
 
         if (!dirty) {
+            console.log("YYY-dirty-2");
             data.push({
                 yyyymm : yyyymm,
                 year : year,
@@ -91,9 +93,8 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
             dirty = true;
         }
 
-        if (dirty) {
-            this.dataSource.saveData();
-        }
+        this.dataSource.saveData();
+        console.log("YYY-dirty-3");
 
     }
 
