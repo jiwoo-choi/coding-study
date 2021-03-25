@@ -39,7 +39,7 @@ export default class GithubIssueCheckService implements AttendantCheckService {
                 return;
             }
             this.githubAPIService.readIssue(last_attendant.issue_number, (ok, attendants) => {
-                if (!ok) throw reject(new Error("cannot read issue from github API"));
+                if (!ok) reject(new Error("cannot read issue from github API"));
                 this.monthlyRepository.updateAttendants(yyyymm, last_attendant.day, attendants);
                 resolve();
             })

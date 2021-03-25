@@ -54,7 +54,7 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
         if (!this.data.monthlyData) return;
         
         let yyyymm = date.builder().yyyymm.build();
-        let day = date.builder().day.build();
+        let day = date.builder().date.build();
         let year = date.builder().year.build();
         let month = date.builder().month.build();
 
