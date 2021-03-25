@@ -223,9 +223,9 @@ const dashboardManager : DashboardManageService = new DashboardManageService(mar
 /** main */
 async function main(){
     try {
-        // await githubIssueCheckService.checkAttendants();
+        await githubIssueCheckService.checkAttendants();
         dashboardManager.updateDashboard();
-        // await githubIssueCheckService.updateNewMetaInfo();    
+        await githubIssueCheckService.updateNewMetaInfo();    
     } catch (e) {
         console.log(e);
     }
