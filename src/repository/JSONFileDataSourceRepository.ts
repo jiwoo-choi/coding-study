@@ -29,9 +29,9 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
     }
 
     updateAttendants(yyyymm: string, day: string, attendants: string[]): void {
-
+        console.log("start");
         if (!this.data.monthlyData) return;
-
+        console.log("end");
         let dirty = false;
 
         for (const monthly of this.data.monthlyData.data) {
@@ -54,7 +54,7 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
     addNewMeta(date: Calendar, issue_number: number): void {
         
         if (!this.data.monthlyData) return;
-        
+
         let yyyymm = date.builder().yyyymm.build();
         let day = date.builder().date.build();
         let year = date.builder().year.build();
