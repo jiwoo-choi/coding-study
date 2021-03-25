@@ -64,7 +64,7 @@ export default class GitHubToolkitCRUDService implements GithubAPISerivce {
                     issue_number: issue_number,
                 })
                 const attendants = issues.data.map(value => value.user.login);
-                callback(false, attendants);
+                callback(true, attendants);
             } catch (e) {
                 tools.log.error(e);
                 tools.exit.failure();
