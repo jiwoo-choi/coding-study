@@ -220,12 +220,14 @@ const markDownTableGeneratorService : TableGeneratorService = new MarkdownTableG
 const markDownChartGeneratorService : ChartGeneratorService = new MarkDownChartGeneratorService(participantRepository, monthlyRepository);
 const dashboardManager : DashboardManageService = new DashboardManageService(markDownTableGeneratorService, markDownChartGeneratorService, dateManager);
 
-
-
-try {
-    githubIssueCheckService.checkAttendants();
-    // dashboardManager.updateDashboard();
-    // githubIssueCheckService.updateNewMetaInfo();    
-} catch (e) {
-    console.log(e);
+/** main */
+async function main(){
+    try {
+        await githubIssueCheckService.checkAttendants();
+        dashboardManager.updateDashboard();
+        await githubIssueCheckService.updateNewMetaInfo();    
+    } catch (e) {
+        console.log(e);
+    }
 }
+main();
