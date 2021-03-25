@@ -17,9 +17,7 @@ export default class GitHubToolkitCRUDService implements GithubAPISerivce {
     
     createIssue(callback: (ok : boolean, issue_number:number, dataManager: Calendar) => void) {
 
-     
-
-        Toolkit.run( async tools => {
+             Toolkit.run( async tools => {
             const cheeringComments = ["오늘도 화이팅!", "오늘도 끝까지 해봐요!", "오늘도 풀어봅시다."]
             //dateManager
             

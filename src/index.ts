@@ -231,3 +231,5 @@ async function main(){
     }
 }
 main();
+
+// monthlyRepository.addNewMeta(dateManager.getTomorrow(), 81);
