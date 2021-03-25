@@ -8,7 +8,7 @@ on:
     - cron: 0 3 * * *
   push:
     branches:
-      - bug-fix
+      - main
   # Triggers the workflow on push or pull request events but only for the main branch
     
 jobs:
