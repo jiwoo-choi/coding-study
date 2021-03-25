@@ -26,7 +26,7 @@ export default class DataSource implements DataSourceTx {
 
         try {
             if (this.monthlyData) {
-                this.monthlyData.update = new Date().toString();
+                this.monthlyData.update = new Date().toISOString();
                 fs.writeFileSync(MONTHLY_DB, JSON.stringify(this.monthlyData));
             }    
         } catch {
