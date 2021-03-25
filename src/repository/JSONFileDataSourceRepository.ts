@@ -93,8 +93,11 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
             dirty = true;
         }
 
+        console.log(this.data.monthlyData);
         this.dataSource.saveData();
         console.log("YYY-dirty-3");
+        console.log(this.data.monthlyData);
+
 
     }
 
