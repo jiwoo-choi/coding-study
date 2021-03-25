@@ -29,7 +29,7 @@ public class Solution {
             for (int j = i+1; j < N; j++) {
                 long xdiff = Math.abs(coord[i][0] - coord[j][0]);
                 long ydiff = Math.abs(coord[i][1] - coord[j][1]);
-                edge[i][j] = edge[j][i] = xdiff * xdiff + ydiff * ydiff;
+                edge[i][j] = edge[j][i] = xdiff*xdiff + ydiff*ydiff;
             }
         }
 
