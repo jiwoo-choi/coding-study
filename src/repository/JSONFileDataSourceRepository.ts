@@ -37,11 +37,13 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
         for (const monthly of this.data.monthlyData.data) {
             if (monthly.yyyymm !== yyyymm) continue;
             for (const attendance of monthly.attendance) {
-                if (attendance.day !== day) {
+                if (attendance.day === day) {
                     dirty = true;
                     attendance.checked = attendants;
+                    break;
                 }
             }
+            if (dirty) break;
         }
 
         if (dirty) {
@@ -69,6 +71,7 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
                     issue_number: issue_number
                 })
                 dirty = true;
+                break;
             }
         }
 
