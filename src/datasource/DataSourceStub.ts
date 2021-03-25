@@ -1,4 +1,4 @@
-import { DataType } from "entity";
+import { DataType, MonthlyDataType } from "../entity";
 import DataSource from "./DataSource";
 import DataSourceTx from "./DataSourceTx";
 
@@ -13,7 +13,7 @@ export default class DataSourceStub implements DataSourceTx {
     }  
     loadData(): void {
     }
-    saveData(): void {
+    saveData(newMonthlyData: MonthlyDataType): void {
     }
     getData(): DataType {
         return this.data;

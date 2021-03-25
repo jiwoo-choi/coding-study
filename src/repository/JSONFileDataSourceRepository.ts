@@ -47,7 +47,7 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
         }
 
         if (dirty) {
-            this.dataSource.saveData();
+            this.dataSource.saveData(this.data.monthlyData);
         }
     }
 
@@ -95,10 +95,12 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
 
         console.log(this.data.monthlyData.data[2].attendance);
         console.log(this.data.monthlyData.data[2].attendance.length);
-        this.dataSource.saveData();
+        console.log(this.data.monthlyData.update);
+        this.dataSource.saveData(this.data.monthlyData);
         console.log("YYY-dirty-3");
         console.log(this.data.monthlyData.data[2].attendance);
         console.log(this.data.monthlyData.data[2].attendance.length);
+        console.log(this.data.monthlyData.update);
 
     }
 

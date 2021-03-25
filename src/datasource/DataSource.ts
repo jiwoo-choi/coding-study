@@ -22,8 +22,10 @@ export default class DataSource implements DataSourceTx {
         this.loadData();
     }
 
-    saveData(): void {
+    saveData(newMonthlyData: MonthlyDataType): void {
 
+        this.monthlyData = newMonthlyData;
+        
         try {
             if (this.monthlyData) {
                 this.monthlyData.update = new Date().toISOString();
