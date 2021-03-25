@@ -224,8 +224,8 @@ const dashboardManager : DashboardManageService = new DashboardManageService(mar
 
 try {
     githubIssueCheckService.checkAttendants();
-    dashboardManager.updateDashboard();
-    githubIssueCheckService.updateNewMetaInfo();    
+    // dashboardManager.updateDashboard();
+    // githubIssueCheckService.updateNewMetaInfo();    
 } catch (e) {
     console.log(e);
 }
