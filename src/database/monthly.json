@@ -555,6 +555,30 @@
             "date": "20210323",
             "checked": [],
             "issue_number": 79
+          },
+          {
+            "day": "23",
+            "date": "20210323",
+            "checked": [
+              "hoonti06",
+              "jiwoo-choi"
+            ],
+            "issue_number": 79
+          },
+          {
+            "day": "24",
+            "date": "20210324",
+            "checked": [
+              "jiwoo-choi",
+              "hoonti06"
+            ],
+            "issue_number": 80
+          },
+          {
+            "day": "25",
+            "date": "20210325",
+            "checked": [],
+            "issue_number": 81
           }
         ]
       }
