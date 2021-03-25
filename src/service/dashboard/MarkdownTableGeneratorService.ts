@@ -49,7 +49,6 @@ export default class MarkdownTableGeneratorService implements TableGeneratorServ
         const allYYYYMM = this.repository.queryAvailableYYYYMMM();
 
         allYYYYMM.forEach(  yyyymm => {
-
             const header = this.getHeader(yyyymm);
             const divider = this.getDivider(header.length);
             const headerArea = [header.join("|"),divider.join("")].join('\n');
