@@ -119,7 +119,7 @@ public class Main {
             for (int i = 0; i < edge[from].size(); i++)
                 pq.offer(edge[from].get(i));
         }
-        for (int i = 1; i < curLabel; i++)
+        for (int i = 1; i <= curLabel; i++)
             if (!visited[i]) return -1;
 
         return res;
