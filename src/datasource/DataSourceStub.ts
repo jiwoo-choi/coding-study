@@ -7,15 +7,22 @@ import DataSourceTx from "./DataSourceTx";
  */
 export default class DataSourceStub implements DataSourceTx {
 
-    private data : DataType
+    get data() : DataType{
+        return this.getData();
+    }
+
+    private mockData;
     constructor(mockData: DataType) {
-        this.data = mockData;
+        this.mockData = mockData;
     }  
+
     loadData(): void {
     }
-    saveData(newMonthlyData: MonthlyDataType): void {
+
+    saveData(): void {
     }
+    
     getData(): DataType {
-        return this.data;
+        return this.mockData;
     }
 }

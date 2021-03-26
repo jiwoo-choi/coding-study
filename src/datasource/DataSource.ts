@@ -10,6 +10,7 @@ export default class DataSource implements DataSourceTx {
     private static instance?: DataSourceTx;
     private pariticipationData? : ParticipationDataType;
     private monthlyData? : MonthlyDataType;
+    private _data : DataType;
 
     public static getInstance(): DataSourceTx {
         if (DataSource.instance === undefined) {
@@ -20,21 +21,32 @@ export default class DataSource implements DataSourceTx {
 
     private constructor() {
         this.loadData();
+        this._data = {
+            participationData: this.pariticipationData,
+            monthlyData : this.monthlyData
+        }
     }
 
-    saveData(newMonthlyData: MonthlyDataType): void {
+    get data(): DataType {
+        return this._data;
+    }
 
-        this.monthlyData = newMonthlyData;
+    saveData(): void {
 
+        if (!this.monthlyData) return;
+
+
+        const participants = JSON.parse(fs.readFileSync(PARTICIPANTS_PROPERTIES).toString()) as string[]
+        transform(this.monthlyData, participants)
+        
         try {
-            if (this.monthlyData) {
-                this.monthlyData.update = new Date().toISOString();
-                fs.writeFileSync(MONTHLY_DB, JSON.stringify(this.monthlyData));
-            }    
+            this.monthlyData.update = new Date().toISOString();
+            fs.writeFileSync(MONTHLY_DB, JSON.stringify(this.monthlyData));
         } catch {
             throw new Error('write failre: cannot write MONTHLY_DB')
-        }   
-        this.loadData();       
+        }
+        // 현재 메모리에 저장된게 DB버전. 현재 이 싱글톤을 공유하면 같은 참조를 가져야한다.
+        // this.loadData();
      }
 
     loadData() : void {
@@ -62,18 +74,9 @@ export default class DataSource implements DataSourceTx {
         } catch (e) {
             throw new Error('load failure : cannot load to DatabaseSource' + 'message : ' + e);
         }
-        // if (this.monthlyData && participants_pp) {
-        //     const participants = JSON.parse(participants_pp.toString()) as string[]
-        // } else {
-        //     throw new Error('읽기 ')
-        // }
-        // this.pariticipationData = JSON.parse(fs.readFileSync(PARTICIPANTS_DB).toString()) as ParticipationDataType
     }
 
     getData() : DataType {
-        return {
-            participationData: this.pariticipationData,
-            monthlyData : this.monthlyData
-        }
+        return this._data;
     }
 }

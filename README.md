@@ -1,22 +1,22 @@
 ## 참여율 차트 (단위 : 건)
 |월간 참여횟수|인당 총 참여횟수|
 |:-:|:-:
-|![Image of sumRateByMonthSinceBegining](https://quickchart.io/chart?c={"type":"bar","data":{"labels":["202101","202102","202103"],"datasets":[{"backgroundColor":"rgb(75,192,192)","data":[32,66,43]}]},"options":{"legend":{"display":false}}})|![Image of sumRateByPplSinceBeginningStr](https://quickchart.io/chart?c={"type":"bar","data":{"labels":["jihyunhillpark","hoonti06","jeesooyaa","jiwoo-choi"],"datasets":[{"backgroundColor":"rgb(255,99,132)","data":[20,46,31,42]}]},"options":{"legend":{"display":false}}})
+|![Image of sumRateByMonthSinceBegining](https://quickchart.io/chart?c={"type":"bar","data":{"labels":["202101","202102","202103"],"datasets":[{"backgroundColor":"rgb(75,192,192)","data":[32,66,43]}]},"options":{"legend":{"display":false}}})|![Image of sumRateByPplSinceBeginningStr](https://quickchart.io/chart?c={"type":"bar","data":{"labels":["jihyunhillpark","hoonti06","jeesooyaa","jiwoo-choi"],"datasets":[{"backgroundColor":"rgb(255,99,132)","data":[20,47,31,43]}]},"options":{"legend":{"display":false}}})
 ## 개인별 참여 차트 (단위 : %)
 |jihyunhillpark|hoonti06
 |:-:|:-:
-|![Image of jihyunhillpark](https://quickchart.io/chart?c={"type":"bar","data":{"labels":["2021-01","2021-02","2021-03"],"datasets":[{"backgroundColor":"rgb(54,162,235)","data":[23,39,6]}]},"options":{"legend":{"display":false},"scales":{"yAxes":[{"ticks":{"stepSize":5,"min":0,"max":100}}]}}})|![Image of hoonti06](https://quickchart.io/chart?c={"type":"bar","data":{"labels":["2021-01","2021-02","2021-03"],"datasets":[{"backgroundColor":"rgb(54,162,235)","data":[29,75,52]}]},"options":{"legend":{"display":false},"scales":{"yAxes":[{"ticks":{"stepSize":5,"min":0,"max":100}}]}}})
+|![Image of jihyunhillpark](https://quickchart.io/chart?c={"type":"bar","data":{"labels":["2021-01","2021-02","2021-03"],"datasets":[{"backgroundColor":"rgb(54,162,235)","data":[23,39,6]}]},"options":{"legend":{"display":false},"scales":{"yAxes":[{"ticks":{"stepSize":5,"min":0,"max":100}}]}}})|![Image of hoonti06](https://quickchart.io/chart?c={"type":"bar","data":{"labels":["2021-01","2021-02","2021-03"],"datasets":[{"backgroundColor":"rgb(54,162,235)","data":[29,75,55]}]},"options":{"legend":{"display":false},"scales":{"yAxes":[{"ticks":{"stepSize":5,"min":0,"max":100}}]}}})
 
 |jeesooyaa|jiwoo-choi
 |:-:|:-:
-|![Image of jeesooyaa](https://quickchart.io/chart?c={"type":"bar","data":{"labels":["2021-01","2021-02","2021-03"],"datasets":[{"backgroundColor":"rgb(54,162,235)","data":[26,50,29]}]},"options":{"legend":{"display":false},"scales":{"yAxes":[{"ticks":{"stepSize":5,"min":0,"max":100}}]}}})|![Image of jiwoo-choi](https://quickchart.io/chart?c={"type":"bar","data":{"labels":["2021-01","2021-02","2021-03"],"datasets":[{"backgroundColor":"rgb(54,162,235)","data":[26,71,45]}]},"options":{"legend":{"display":false},"scales":{"yAxes":[{"ticks":{"stepSize":5,"min":0,"max":100}}]}}})
+|![Image of jeesooyaa](https://quickchart.io/chart?c={"type":"bar","data":{"labels":["2021-01","2021-02","2021-03"],"datasets":[{"backgroundColor":"rgb(54,162,235)","data":[26,50,29]}]},"options":{"legend":{"display":false},"scales":{"yAxes":[{"ticks":{"stepSize":5,"min":0,"max":100}}]}}})|![Image of jiwoo-choi](https://quickchart.io/chart?c={"type":"bar","data":{"labels":["2021-01","2021-02","2021-03"],"datasets":[{"backgroundColor":"rgb(54,162,235)","data":[26,71,48]}]},"options":{"legend":{"display":false},"scales":{"yAxes":[{"ticks":{"stepSize":5,"min":0,"max":100}}]}}})
 
 참여자|03/01|03/02|03/03|03/04|03/05|03/06|03/07|03/08|03/09|03/10|03/11|03/12|03/13|03/14|03/15|03/16|03/17|03/18|03/19|03/20|03/21|03/22|03/23|03/24|03/25|03/26|03/27|03/28|03/29|03/30|03/31
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
-jihyunhillpark| | | | | |✅| | | | | | | | | |✅| | | | | | | | | | | | | | | 
-hoonti06|✅|✅|✅|✅| | | |✅| |✅|✅|✅| | |✅|✅|✅|✅| |✅| |✅|✅|✅| | | | | | | 
-jeesooyaa| |✅| | | | | |✅|✅| | | | | |✅|✅|✅|✅|✅| |✅| | | | | | | | | | 
-jiwoo-choi|✅|✅| |✅| | |✅| |✅|✅| | |✅| |✅|✅|✅|✅| | | |✅|✅|✅| | | | | | | 
+jihyunhillpark| | | | | |✅| | | | | | | | | |✅| | | | | | | | | | | | | | 
+hoonti06|✅|✅|✅|✅| | | |✅| |✅|✅|✅| | |✅|✅|✅|✅| |✅| |✅|✅|✅|✅| | | | | 
+jeesooyaa| |✅| | | | | |✅|✅| | | | | |✅|✅|✅|✅|✅| |✅| | | | | | | | | 
+jiwoo-choi|✅|✅| |✅| | |✅| |✅|✅| | |✅| |✅|✅|✅|✅| | | |✅|✅|✅|✅| | | | | 
 
 참여자|02/01|02/02|02/03|02/04|02/05|02/06|02/07|02/08|02/09|02/10|02/11|02/12|02/13|02/14|02/15|02/16|02/17|02/18|02/19|02/20|02/21|02/22|02/23|02/24|02/25|02/26|02/27|02/28
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--

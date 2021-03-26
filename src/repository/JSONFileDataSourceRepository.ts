@@ -7,16 +7,16 @@ import ParticipantRepository from "./ParticipantRepository";
 export default class JSONFileDataSourceRepository implements ParticipantRepository, MontlyRepository {
 
     private dataSource : DataSourceTx;
-    private data : DataType;
+    // private data : DataType;
 
     constructor() {
         this.dataSource = DataSource.getInstance();
-        this.data = this.dataSource.getData();
+        // this.data = this.dataSource.getData();
     }
 
     queryByYYYYMMInMontly(yyyymm: string): Monthly | null {
-        if (!this.data.monthlyData) return null;
-        const monthlyData = this.data.monthlyData.data.filter( monthly => monthly.yyyymm === yyyymm)
+        if (!this.dataSource.data.monthlyData) return null;
+        const monthlyData = this.dataSource.data.monthlyData.data.filter( monthly => monthly.yyyymm === yyyymm)
         if (monthlyData.length < 1) return null;
         return monthlyData[0];
     }
@@ -29,17 +29,19 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
     }
 
     updateAttendants(yyyymm: string, day: string, attendants: string[]): void {
-        console.log("start");
-        if (!this.data.monthlyData) return;
-        console.log("end");
+
+        if (!this.dataSource.data.monthlyData) return;
+
         let dirty = false;
 
-        for (const monthly of this.data.monthlyData.data) {
+        const filteredAttendants = [...new Set(attendants)];
+
+        for (const monthly of this.dataSource.data.monthlyData.data) {
             if (monthly.yyyymm !== yyyymm) continue;
             for (const attendance of monthly.attendance) {
                 if (attendance.day === day) {
                     dirty = true;
-                    attendance.checked = attendants;
+                    attendance.checked = filteredAttendants;
                     break;
                 }
             }
@@ -47,25 +49,24 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
         }
 
         if (dirty) {
-            this.dataSource.saveData(this.data.monthlyData);
+            this.dataSource.saveData();
         }
     }
 
     addNewMeta(date: Calendar, issue_number: number): void {
         
-        if (!this.data.monthlyData) return;
+        if (!this.dataSource.data.monthlyData) return;
 
         let yyyymm = date.builder().yyyymm.build();
         let day = date.builder().date.build();
         let year = date.builder().year.build();
         let month = date.builder().month.build();
 
-        const data = this.data.monthlyData.data;
+        const data = this.dataSource.data.monthlyData.data;
 
         let dirty = false;
         for (let monthly of data) {
             if (monthly.yyyymm === yyyymm) { 
-                console.log("YYY-dirty-1");
                 monthly.attendance.push({
                     day : day,
                     checked:[],
@@ -77,7 +78,6 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
         }
 
         if (!dirty) {
-            console.log("YYY-dirty-2");
             data.push({
                 yyyymm : yyyymm,
                 year : year,
@@ -92,28 +92,18 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
             })
             dirty = true;
         }
-
-        console.log(this.data.monthlyData.data[2].attendance);
-        console.log(this.data.monthlyData.data[2].attendance.length);
-        console.log(this.data.monthlyData.update);
-        this.dataSource.saveData(this.data.monthlyData);
-        console.log("YYY-dirty-3");
-        console.log(this.data.monthlyData.data[2].attendance);
-        console.log(this.data.monthlyData.data[2].attendance.length);
-        console.log(this.data.monthlyData.update);
-
+        this.dataSource.saveData();
     }
 
-
     queryAllMonthly(): Monthly[] {
-        if (!this.data.monthlyData) return [];
-        return this.data.monthlyData.data;
+        if (!this.dataSource.data.monthlyData) return [];
+        return this.dataSource.data.monthlyData.data;
     }
     
     queryAvailableYYYYMMM(): string[] {
-        if (!this.data.participationData) return [];
+        if (!this.dataSource.data.participationData) return [];
         return Array.from(
-            this.data.participationData.data
+            this.dataSource.data.participationData.data
                 .reduce( (prev, curr) => {
                 curr.participation.forEach( (e) => {
                     prev.add(e.yyyymm);
@@ -125,8 +115,8 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
     }
     
     queryByYYYYMM(yyyymm: string): Participant[] {
-        if (!this.data.participationData) return [];
-        return this.data.participationData.data.reduce( (prev, curr) => {
+        if (!this.dataSource.data.participationData) return [];
+        return this.dataSource.data.participationData.data.reduce( (prev, curr) => {
             const participation = curr.participation.filter( v => v.yyyymm === yyyymm)
             if (participation.length > 0) {
                 prev.push({
@@ -139,13 +129,13 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
     }
 
     queryById(id: string): Participant | null{
-        if (!this.data.participationData) return null;
-        const result =  this.data.participationData.data.filter( (participant) => participant.id === id);
+        if (!this.dataSource.data.participationData) return null;
+        const result =  this.dataSource.data.participationData.data.filter( (participant) => participant.id === id);
         return result.length > 0 ? result[0] : null;
     }
 
     queryAllParticipants(): Participant[] {
-        if (!this.data.participationData) return [];
-        return this.data.participationData.data;
+        if (!this.dataSource.data.participationData) return [];
+        return this.dataSource.data.participationData.data;
     }
 }
