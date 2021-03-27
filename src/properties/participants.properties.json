@@ -1,1 +1,18 @@
-["jihyunhillpark", "hoonti06", "jeesooyaa", "jiwoo-choi"]
+[
+    {
+        "github" : "jiwoo-choi",
+        "boj" : "faker"
+    },
+    {
+        "github" : "hoonti06",
+        "boj" : "hoonti06"
+    },
+    {
+        "github" : "jeesooyaa",
+        "boj" : "sooyaa"
+    },
+    {
+        "github" : "jihyunhillpark",
+        "boj" : "jihyunee"
+    }
+]

@@ -1,84 +1,36 @@
-import fs from 'fs'
-import fetch from 'node-fetch'
-interface Properties {
-    participants : string[],
+export interface ProblemProperties {
+    /** 검색할 문제 range */
     tierRange: string,
+    /** 최소 검색 제한 */
     minSolvedLimit: number,
+    /** 뽑을 문제 개수들 */
     numberOfQuestions:number,
 }
 
-interface BOJResult {
-    success: boolean,
-    result: {
-      total_problems:number,
-      total_page:number,
-      problems: Problem[]
-    }
-  }
+export interface BojQueryGenerator {
 
-interface Problem {
-    id : string,
-    level: number,
-    level_locked: number,
-    solvable: number,
-    title: string,
-    solved_count :number,
-    average_try:number,
-
+    /** id에 해당하는 정보를 가져오는 쿼리 생산 */
+    getParticipantInfoQuery(id:string):string;
+    /** ids를 제외한 나머지를 요청하는 쿼리 생산. */
+    getRandomProblemQuery(ids:string[], properties: ProblemProperties):string;
 }
 
-export default class BojQuery {
-    private data : Properties;
 
-    constructor() {
-        const read = fs.readFileSync("./bojproperties.json");
-        this.data = JSON.parse(read.toString()) as Properties;
+const BASE_URL: string = "https://api.solved.ac/v2/search/";
+const SOURCE_URL : string = "recommendations.json";
+// const PROBLEM_SOURCE : string = "problems.json";
+
+export default class SolvedACQueryGenerator implements BojQueryGenerator {
+
+    getParticipantInfoQuery(id: string): string {
+        return BASE_URL + SOURCE_URL + "?query=" + id;
     }
 
-    getQuery() {
-        return this.data.participants.map( value => `~solved_by:${value}`).join('+') 
-        + "+tier:" + this.data.tierRange + "+"
-        + "+solved:" + this.data.minSolvedLimit + ".." 
+    getRandomProblemQuery(ids: string[], properties: ProblemProperties): string {
+        return BASE_URL + SOURCE_URL + "?query=" + 
+        ids.map( value => `~solved_by:${value}`).join('+') 
+        + "+tier:" + properties.tierRange + "+"
+        + "+solved:" + properties.minSolvedLimit + ".." 
         + "&page=1";
-        
-    }
-
-    
-    async request(): Promise<string[]> {
-
-        const mapper = (value : Problem) => `[${this.convert(value.level)} : ${value.id}번 ${value.title}](https://www.acmicpc.net/problem/${value.id})`;
-        
-        const response = await fetch(`https://api.solved.ac/v2/search/problems.json?query=${this.getQuery()}`)
-        const json = await response.json() as BOJResult;
-        if (json.result.total_problems == 0) {
-            return Promise.reject("NO QUESTIONS FOUND");
-        } else if (json.result.total_problems <= this.data.numberOfQuestions) {
-            return json.result.problems.map(mapper)
-        } else {
-            const duplicateChecker = new Set<number>();
-            const returnArray = [];
-            const prevSize = 0;
-            while(duplicateChecker.size < this.data.numberOfQuestions) {
-                const index = Math.floor(Math.random() * json.result.problems.length-1);
-                duplicateChecker.add(index);
-                if (duplicateChecker.size != prevSize) {
-                    returnArray.push(json.result.problems[index]);
-                }
-            }
-            return returnArray.map(mapper);
-        }
-    } 
-
-    convert(level : number) : string {
-        if (level < 1 || level > 30) return "Undefined";
-        const table = [
-            "Bronze",
-            "Silver",
-            "Gold",
-            "Platinum",
-            "Diamond",
-            "Ruby",
-        ]
-        return table[Math.floor((level-1)/5)] + " " + (5 - ((level-1) % 5));
     }
 }

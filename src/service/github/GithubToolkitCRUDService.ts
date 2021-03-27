@@ -2,7 +2,7 @@ import { Toolkit } from "actions-toolkit";
 import { Calendar } from "../../util";
 
 export interface GithubAPISerivce {
-    createIssue(callback: (ok : boolean, issue_number: number, dataManager: Calendar) => void) : void
+    createIssue(callback: (ok : boolean, issue_number: number) => void) : void
     readIssue(issue_number : number, callback: (ok : boolean, attendants: string[]) => void) : void;
 }
 
@@ -15,7 +15,7 @@ export default class GitHubToolkitCRUDService implements GithubAPISerivce {
         this.dateManager = dateManager;
     }
     
-    createIssue(callback: (ok : boolean, issue_number:number, dataManager: Calendar) => void) {
+    createIssue(callback: (ok : boolean, issue_number:number) => void) {
 
              Toolkit.run( async tools => {
             const cheeringComments = ["오늘도 화이팅!", "오늘도 끝까지 해봐요!", "오늘도 풀어봅시다."]
@@ -35,10 +35,10 @@ export default class GitHubToolkitCRUDService implements GithubAPISerivce {
                     body,
                 });
                 tools.log.success(`Created issue ${issue.data.title}#${issue.data.number}: ${issue.data.html_url}`,);
-                callback(true, issue.data.number, this.dateManager);
+                callback(true, issue.data.number);
             } catch (e) {
                 tools.log.error(e);
-                callback(false, 0, this.dateManager);
+                callback(false, 0);
                 tools.exit.failure();
             }
         },  

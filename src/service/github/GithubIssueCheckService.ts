@@ -21,10 +21,9 @@ export default class GithubIssueCheckService implements AttendantCheckService {
 
     updateNewMetaInfo(): Promise<void> {
         return new Promise((resolve, reject) => {
-            const tomorrow = this.dateManager.getTomorrow();
-            this.githubAPIService.createIssue( (ok, issue_number, dateManager) => {
+            this.githubAPIService.createIssue( (ok, issue_number) => {
                 if (!ok) reject(new Error("cannot create issue using github API"));
-                this.monthlyRepository.addNewMeta(tomorrow, issue_number);
+                this.monthlyRepository.addNewMeta(this.dateManager, issue_number);
                 resolve();
             })
         });
@@ -32,7 +31,7 @@ export default class GithubIssueCheckService implements AttendantCheckService {
 
     checkAttendants(): Promise<void> {
         return new Promise( (resolve, reject) => {
-            const yyyymm = this.dateManager.builder().yyyymm.build();
+            const yyyymm = this.dateManager.getYesterDay().builder().yyyymm.build();
             const last_attendant = this.monthlyRepository.queryLatestAttedanceByYYYYMM(yyyymm);
             if (last_attendant === null) {
                 reject(new Error("cannot found issue number from " + yyyymm));

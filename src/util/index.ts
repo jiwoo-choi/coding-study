@@ -1,9 +1,12 @@
 import Calendar from './Calendar'
-import BojQueryGenerator from './BojQueryGenerator';
+import SolvedACQueryGenerator from './BojQueryGenerator';
 import ChartQueryGenerator from './ChartQueryGenerator';
+import { BojQueryGenerator, ProblemProperties} from './BojQueryGenerator';
 
 export {
     Calendar,
+    SolvedACQueryGenerator,
     BojQueryGenerator,
     ChartQueryGenerator,
+    ProblemProperties
 } 

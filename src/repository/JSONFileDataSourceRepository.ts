@@ -31,11 +31,8 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
     updateAttendants(yyyymm: string, day: string, attendants: string[]): void {
 
         if (!this.dataSource.data.monthlyData) return;
-
         let dirty = false;
-
         const filteredAttendants = [...new Set(attendants)];
-
         for (const monthly of this.dataSource.data.monthlyData.data) {
             if (monthly.yyyymm !== yyyymm) continue;
             for (const attendance of monthly.attendance) {
@@ -113,7 +110,7 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
         }, new Set<string>()))
         .sort((a, b) => parseInt(b)-parseInt(a));
     }
-    
+
     queryByYYYYMM(yyyymm: string): Participant[] {
         if (!this.dataSource.data.participationData) return [];
         return this.dataSource.data.participationData.data.reduce( (prev, curr) => {
