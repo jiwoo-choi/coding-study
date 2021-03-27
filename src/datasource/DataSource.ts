@@ -37,10 +37,10 @@ export default class DataSource implements DataSourceTx {
 
 
         const participants = JSON.parse(fs.readFileSync(PARTICIPANTS_PROPERTIES).toString()) as string[]
-        transform(this.monthlyData, participants)
         
         try {
             this.monthlyData.update = new Date().toISOString();
+            this.pariticipationData = transform(this.monthlyData, participants)
             fs.writeFileSync(MONTHLY_DB, JSON.stringify(this.monthlyData));
         } catch {
             throw new Error('write failre: cannot write MONTHLY_DB')
