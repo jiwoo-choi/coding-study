@@ -1,7 +1,7 @@
 ## 참여율 차트 (단위 : 건)
 |월간 참여횟수|인당 총 참여횟수|
 |:-:|:-:
-|![Image of sumRateByMonthSinceBegining](https://quickchart.io/chart?c={"type":"bar","data":{"labels":["202101","202102","202103"],"datasets":[{"backgroundColor":"rgb(75,192,192)","data":[32,66,43]}]},"options":{"legend":{"display":false}}})|![Image of sumRateByPplSinceBeginningStr](https://quickchart.io/chart?c={"type":"bar","data":{"labels":["jihyunhillpark","hoonti06","jeesooyaa","jiwoo-choi"],"datasets":[{"backgroundColor":"rgb(255,99,132)","data":[20,47,31,43]}]},"options":{"legend":{"display":false}}})
+|![Image of sumRateByMonthSinceBegining](https://quickchart.io/chart?c={"type":"bar","data":{"labels":["202101","202102","202103"],"datasets":[{"backgroundColor":"rgb(75,192,192)","data":[32,66,45]}]},"options":{"legend":{"display":false}}})|![Image of sumRateByPplSinceBeginningStr](https://quickchart.io/chart?c={"type":"bar","data":{"labels":["jihyunhillpark","hoonti06","jeesooyaa","jiwoo-choi"],"datasets":[{"backgroundColor":"rgb(255,99,132)","data":[20,47,31,43]}]},"options":{"legend":{"display":false}}})
 ## 개인별 참여 차트 (단위 : %)
 |jihyunhillpark|hoonti06
 |:-:|:-:
@@ -33,4 +33,4 @@ jeesooyaa| | | | | | | | | | | | | | | | | | | | | | |✅|✅|✅|✅|✅| |✅|
 jiwoo-choi| | | | | | | | | | | | | | | | | | | | | | |✅|✅|✅|✅|✅|✅|✅| |✅
 
 
-2021-03-26
+2021-03-27
