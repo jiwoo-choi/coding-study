@@ -45,9 +45,7 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
             if (dirty) break;
         }
 
-        if (dirty) {
-            this.dataSource.saveData();
-        }
+        this.dataSource.saveData();
     }
 
     addNewMeta(date: Calendar, issue_number: number): void {

@@ -51,7 +51,7 @@ export default class DataSource implements DataSourceTx {
             throw new Error('write failre: cannot write MONTHLY_DB')
         }
         // 현재 메모리에 저장된게 DB버전. 현재 이 싱글톤을 공유하면 같은 참조를 가져야한다.
-        // this.loadData();
+        this.loadData();
      }
 
     loadData() : void {
