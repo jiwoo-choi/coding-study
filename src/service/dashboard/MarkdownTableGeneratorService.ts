@@ -26,9 +26,12 @@ export default class MarkdownTableGeneratorService implements TableGeneratorServ
         let rows = "";
         const filledDays = new Array(length - 1).fill(false);
         const participants = this.repository.queryByYYYYMM(yyyymm);
-        console.log(participants[0].participation);
 
         participants.forEach( participant => {
+
+            console.log(participant.id);
+            console.log(participant.participation[0].attendance);
+
             const start = Math.max(parseInt(participant.participation[0].start) - 1, 0);
             const end = Math.min(parseInt(participant.participation[0].last), filledDays.length);
             const first = filledDays.slice(0, start)
@@ -42,12 +45,14 @@ export default class MarkdownTableGeneratorService implements TableGeneratorServ
 
     populateTable(checked?:string, unchecked?: string): string {
 
+        console.log(this.repository.queryAllParticipants()[0].id)
+        console.log(this.repository.queryAllParticipants()[0].participation[0].attendance);
+
         const checkedMark = checked ? checked : "O"
         const uncheckedMark = unchecked ? unchecked : "X"
 
         let table : string = "";
         const allYYYYMM = this.repository.queryAvailableYYYYMMM();
-        console.log(allYYYYMM);
 
         allYYYYMM.forEach(  yyyymm => {
             const header = this.getHeader(yyyymm);
