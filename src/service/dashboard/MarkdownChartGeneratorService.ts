@@ -14,7 +14,6 @@ export default class MarkdownTableGeneratorService implements ChartGeneratorServ
     populateChart(): string {
 
         let chart: string = "";
-
         const chartQueryMaker = new ChartQueryGenerator();
         const allParticipant = this.pRepository.queryAllParticipants();
         const sumRateByMonthSinceBegining = chartQueryMaker.getSumRateByMonthSinceBegining(this.mRepository.queryAllMonthly());
