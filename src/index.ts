@@ -221,15 +221,17 @@ const markDownChartGeneratorService : ChartGeneratorService = new MarkDownChartG
 const dashboardManager : DashboardManageService = new DashboardManageService(markDownTableGeneratorService, markDownChartGeneratorService, dateManager);
 
 /** main */
-async function main(){
-    try {
-        await githubIssueCheckService.checkAttendants();
-        dashboardManager.updateDashboard();
-        await githubIssueCheckService.updateNewMetaInfo();    
-    } catch (e) {
-        console.log(e);
-    }
-}
-main();
+// async function main(){
+//     try {
+//         await githubIssueCheckService.checkAttendants();
+//         dashboardManager.updateDashboard();
+//         await githubIssueCheckService.updateNewMetaInfo();    
+//     } catch (e) {
+//         console.log(e);
+//     }
+// }
+// main();
+
+dashboardManager.updateDashboard();
 
 // monthlyRepository.addNewMeta(dateManager.getTomorrow(), 81);

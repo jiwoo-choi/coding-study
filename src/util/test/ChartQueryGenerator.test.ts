@@ -1,5 +1,5 @@
-import ChartQueryGenerator from "./ChartQueryGenerator"
-import { BarTypeChart } from './ChartQueryGenerator'
+import ChartQueryGenerator from "../ChartQueryGenerator"
+import { BarTypeChart } from '../ChartQueryGenerator'
 
 describe('참여자별 월별 참석률 구하기', () => {
   let chartQueryGenerator : ChartQueryGenerator = new ChartQueryGenerator();

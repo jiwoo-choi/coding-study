@@ -70,7 +70,6 @@ export default class SolvedAPIService {
         return table[Math.floor((level-1)/5)] + " " + (5 - ((level-1) % 5));
     }
 
-
     async getProfiles() {
         this.bojQueryGenerator.getParticipantInfoQuery('');
     }

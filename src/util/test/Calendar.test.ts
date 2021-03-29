@@ -1,4 +1,4 @@
-import Calendar from './Calendar';
+import Calendar from '../Calendar';
 
 describe('달력 기능 테스트' , () => {
    
