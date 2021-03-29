@@ -26,7 +26,8 @@ export default class MarkdownTableGeneratorService implements TableGeneratorServ
         let rows = "";
         const filledDays = new Array(length - 1).fill(false);
         const participants = this.repository.queryByYYYYMM(yyyymm);
-        console.log(participants);
+        console.log(participants[0].participation);
+
         participants.forEach( participant => {
             const start = Math.max(parseInt(participant.participation[0].start) - 1, 0);
             const end = Math.min(parseInt(participant.participation[0].last), filledDays.length);
