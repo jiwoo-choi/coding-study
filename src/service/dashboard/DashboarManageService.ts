@@ -4,7 +4,7 @@ import { Calendar } from "../../util";
 import fs from 'fs';
 
 export interface DashboardManageService {
-    updateDashboard():void;
+    updateDashboard(savePath:string):void;
 }
 
 export default class DashboardManager implements DashboardManageService {
@@ -19,13 +19,12 @@ export default class DashboardManager implements DashboardManageService {
         this.dateManager = dateManager;
     }
 
-    updateDashboard(): void {
+    updateDashboard(savePath: string): void {
         let content = "";
         content += this.chartGenerator.populateChart();
         content += this.tableGenerator.populateTable("✅", " ");
         content += '\n';
         content += this.dateManager.builder("-").year.month.date.build();
-        fs.writeFileSync(README, content);
+        fs.writeFileSync(savePath, content);
     }
-
 }

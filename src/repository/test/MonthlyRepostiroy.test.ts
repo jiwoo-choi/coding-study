@@ -3,6 +3,8 @@ import { Calendar } from "../../util";
 import JSONFileDataSourceRepository from "../JSONFileDataSourceRepository";
 import MonthlyRepository from "../MonthlyRepository";
 import { getMockDate ,getMockDatabase, MockDate2021, MockDatabase} from '../../testing_util'
+import { DashboardManageService, MarkDownChartGeneratorService, MarkdownTableGeneratorService } from "../../service";
+import { ParticipationRepository } from "../../repository";
 
 /** 모든 월간 데이터 리스트 가져오기 */
 /** 월간 데이터중 yyyymm에 해당하는 데이터를 가져온다 */
@@ -74,5 +76,16 @@ describe('monthlyRepository 기능테스트', () => {
         expect(monthData[0].attendance[0].checked).toStrictEqual(["test"]);
 
     });
+
+    test( '새로운 참석 데이터를 업데이트 했을 경우 표도 업데이트되어야한다' , () => {
+        const monthQuery1 = monthlyRepository.updateAttendants("202101", "27", ["jihyunhillpark"])
+        const markdownchart = new MarkDownChartGeneratorService((monthlyRepository as unknown as ParticipationRepository), monthlyRepository);
+        const markdowntable = new MarkdownTableGeneratorService((monthlyRepository as unknown as ParticipationRepository));
+        const dashboard = new DashboardManageService(markdowntable, markdownchart, new Calendar());
+        const monthData = monthlyRepository.queryAllMonthly();
+        dashboard.updateDashboard("./README2.md")
+        // expect().toStrictEqual(["test"]);
+    });
+
 
 })

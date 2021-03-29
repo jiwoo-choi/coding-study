@@ -208,6 +208,7 @@ import transform from './datasource/transform'
 import { JSONFileDataSourceRepository, MonthlyRepository, ParticipationRepository } from './repository';
 import { MarkdownTableGeneratorService, TableGeneratorService, GithubIssueCheckService , GithubToolkitCRUDService, AttendantCheckService, GithubAPISerivce} from './service';
 import { DashboardManageService, MarkDownChartGeneratorService, ChartGeneratorService } from './service';
+import { README } from './properties/path';
 
 /** container */
 const jsonRepository = new JSONFileDataSourceRepository();
@@ -221,17 +222,17 @@ const markDownChartGeneratorService : ChartGeneratorService = new MarkDownChartG
 const dashboardManager : DashboardManageService = new DashboardManageService(markDownTableGeneratorService, markDownChartGeneratorService, dateManager);
 
 /** main */
-// async function main(){
-//     try {
-//         await githubIssueCheckService.checkAttendants();
-//         dashboardManager.updateDashboard();
-//         await githubIssueCheckService.updateNewMetaInfo();    
-//     } catch (e) {
-//         console.log(e);
-//     }
-// }
-// main();
+async function main(){
+    try {
+        await githubIssueCheckService.checkAttendants();
+        dashboardManager.updateDashboard(README);
+        await githubIssueCheckService.updateNewMetaInfo();    
+    } catch (e) {
+        console.log(e);
+    }
+}
+main();
 
-dashboardManager.updateDashboard();
+// dashboardManager.updateDashboard(README);
 
 // monthlyRepository.addNewMeta(dateManager.getTomorrow(), 81);
