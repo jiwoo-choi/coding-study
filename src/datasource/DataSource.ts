@@ -27,6 +27,8 @@ export default class DataSource implements DataSourceTx {
             monthlyData : this.monthlyData,
             presetParticipants : this.presetParticipants
         }
+
+        console.log("DATA SOURCE LOADED");
     }
 
     get data(): DataType {
@@ -34,6 +36,8 @@ export default class DataSource implements DataSourceTx {
     }
 
     saveData(): void {
+
+        console.log("DATA SOURCE SAVING...");
 
         if (!this.monthlyData) return;
 
@@ -51,6 +55,8 @@ export default class DataSource implements DataSourceTx {
      }
 
     loadData() : void {
+
+        console.log("DATA SOURCE LOADING...");
 
         let monthly_db : MonthlyDataType;
         let participants : PresetParticipantDataType[];
