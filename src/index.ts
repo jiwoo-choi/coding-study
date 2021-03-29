@@ -226,12 +226,14 @@ async function main(){
     try {
         await githubIssueCheckService.checkAttendants();
         dashboardManager.updateDashboard(README);
-        await githubIssueCheckService.updateNewMetaInfo();    
+        // await githubIssueCheckService.updateNewMetaInfo();    
     } catch (e) {
         console.log(e);
     }
 }
 main();
+
+// dashboardManager.updateDashboard(README);
 
 // dashboardManager.updateDashboard(README);
 

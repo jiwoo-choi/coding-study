@@ -26,7 +26,6 @@ export default class MarkdownTableGeneratorService implements TableGeneratorServ
         let rows = "";
         const filledDays = new Array(length - 1).fill(false);
         const participants = this.repository.queryByYYYYMM(yyyymm);
-        
         participants.forEach( participant => {
             const start = Math.max(parseInt(participant.participation[0].start) - 1, 0);
             const end = Math.min(parseInt(participant.participation[0].last), filledDays.length);
@@ -36,7 +35,6 @@ export default class MarkdownTableGeneratorService implements TableGeneratorServ
             const finalRow = first.concat(second.concat(third));
             rows += [participant.id].concat(finalRow.map( (v) => v ? checkedMark : uncheckedMark)).join("|") + '\n';
         })
-
         return rows;
     }
 
@@ -47,7 +45,7 @@ export default class MarkdownTableGeneratorService implements TableGeneratorServ
 
         let table : string = "";
         const allYYYYMM = this.repository.queryAvailableYYYYMMM();
-
+        console.log(allYYYYMM);
         allYYYYMM.forEach(  yyyymm => {
             const header = this.getHeader(yyyymm);
             const divider = this.getDivider(header.length);

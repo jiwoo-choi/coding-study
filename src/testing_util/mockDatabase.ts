@@ -18,9 +18,6 @@ export default function getMockDatabase(database : MockDatabase) : DataType {
                             {
                             "day": "23",
                             "checked": [
-                                "jiwoo-choi",
-                                "jeesooyaa",
-                                "hoonti06",
                                 "jihyunhillpark"
                             ],
                             "issue_number": 1
@@ -38,17 +35,9 @@ export default function getMockDatabase(database : MockDatabase) : DataType {
                             "yyyymm": "202101",
                             "attendance": [
                                 true,
-                                true,
-                                true,
-                                false,
-                                true,
-                                false,
-                                true,
-                                true,
-                                true
                             ],
                             "start": "23",
-                            "last": "31"
+                            "last": "23"
                             },
                         ]
                     }],

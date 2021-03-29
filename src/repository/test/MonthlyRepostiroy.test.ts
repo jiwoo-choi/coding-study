@@ -64,9 +64,7 @@ describe('monthlyRepository 기능테스트', () => {
                 }
             ]
         });
-
         expect(monthData).toStrictEqual(newData);
-
     });
 
 
@@ -74,17 +72,20 @@ describe('monthlyRepository 기능테스트', () => {
         const monthQuery1 = monthlyRepository.updateAttendants("202101", "23", ["test"])
         const monthData = monthlyRepository.queryAllMonthly();
         expect(monthData[0].attendance[0].checked).toStrictEqual(["test"]);
-
     });
 
     test( '새로운 참석 데이터를 업데이트 했을 경우 표도 업데이트되어야한다' , () => {
-        const monthQuery1 = monthlyRepository.updateAttendants("202101", "27", ["jihyunhillpark"])
+        const monthQuery1 = monthlyRepository.updateAttendants("202101", "23", ["jihyunhillpark"])
+        const monthQuery2 = monthlyRepository.updateAttendants("202101", "24", ["jihyunhillpark"])
+
+        const month2 = (monthlyRepository as unknown as ParticipationRepository)
+        // const monthlyRepository.queryAllMonthly();
+        const participants = month2.queryByYYYYMM("202101");
+        console.log(participants)
         const markdownchart = new MarkDownChartGeneratorService((monthlyRepository as unknown as ParticipationRepository), monthlyRepository);
         const markdowntable = new MarkdownTableGeneratorService((monthlyRepository as unknown as ParticipationRepository));
         const dashboard = new DashboardManageService(markdowntable, markdownchart, new Calendar());
-        const monthData = monthlyRepository.queryAllMonthly();
         dashboard.updateDashboard("./README2.md")
-        // expect().toStrictEqual(["test"]);
     });
 
 
