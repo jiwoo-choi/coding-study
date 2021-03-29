@@ -226,7 +226,7 @@ async function main(){
     try {
         await githubIssueCheckService.checkAttendants();
         dashboardManager.updateDashboard(README);
-        // await githubIssueCheckService.updateNewMetaInfo();    
+        await githubIssueCheckService.updateNewMetaInfo();    
     } catch (e) {
         console.log(e);
     }
@@ -234,7 +234,5 @@ async function main(){
 main();
 
 // dashboardManager.updateDashboard(README);
-
 // dashboardManager.updateDashboard(README);
-
 // monthlyRepository.addNewMeta(dateManager.getTomorrow(), 81);

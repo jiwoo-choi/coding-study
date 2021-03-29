@@ -31,6 +31,7 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
     updateAttendants(yyyymm: string, day: string, attendants: string[]): void {
 
         if (!this.dataSource.data.monthlyData) return;
+
         let dirty = false;
         const filteredAttendants = [...new Set(attendants)];
         for (const monthly of this.dataSource.data.monthlyData.data) {
@@ -45,7 +46,7 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
             if (dirty) break;
         }
 
-        this.dataSource.saveData();
+        this.dataSource.saveData(this.dataSource.data.monthlyData);
     }
 
     addNewMeta(date: Calendar, issue_number: number): void {
@@ -87,7 +88,7 @@ export default class JSONFileDataSourceRepository implements ParticipantReposito
             })
             dirty = true;
         }
-        this.dataSource.saveData();
+        this.dataSource.saveData(this.dataSource.data.monthlyData);
     }
 
     queryAllMonthly(): Monthly[] {

@@ -23,9 +23,10 @@ export default class DataSourceStub implements DataSourceTx {
         this.mockData = fs.readFileSync('./test.json') as DataType;
     }
 
-    saveData(): void {
+    saveData(newMonthlyData : MonthlyDataType): void {
         // 테스트 데이터를 저장합니다.
         // console.log(this.mockData.monthlyData)
+        this.mockData.monthlyData = newMonthlyData;
         fs.writeFileSync('./test.json', JSON.stringify(this.mockData.monthlyData));
     }
     

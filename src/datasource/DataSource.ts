@@ -32,15 +32,19 @@ export default class DataSource implements DataSourceTx {
     }
 
     get data(): DataType {
-        return this._data;
+        return {
+            participationData: this.pariticipationData,
+            monthlyData : this.monthlyData,
+            presetParticipants : this.presetParticipants
+        }
     }
 
-    saveData(): void {
+    saveData(newMonthlyData : MonthlyDataType): void {
 
         console.log("DATA SOURCE SAVING...");
 
-        if (!this.monthlyData) return;
-
+        // if (!this.monthlyData) return;
+        this.monthlyData = newMonthlyData;
         const participants = JSON.parse(fs.readFileSync(PARTICIPANTS_PROPERTIES).toString()) as string[]
         
         try {
